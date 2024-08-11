@@ -5,7 +5,15 @@ let refreshBtn = document.querySelector("#refreshGrid");
 let options = document.querySelector(".options");
 let gridSize = 16;
 let isMouseDown = false
+let selectedColor = "#000000"
 
+// Color Picker
+
+let colorPicker = document.querySelector("#colorPicker");
+
+colorPicker.addEventListener("input", () => {
+    selectedColor = colorPicker.value;
+})
 
 
 // User Interface functions
@@ -20,9 +28,9 @@ squaresPerSide.addEventListener("input", () => {
 
 function paint(event) {
     let target = event.target;
-    if (isMouseDown && target.classList == "pixel") {
+    if (isMouseDown && target.classList.contains('pixel')) {
 
-        target.classList.add('painted');
+        target.style.backgroundColor = selectedColor;
     }
 }
 
