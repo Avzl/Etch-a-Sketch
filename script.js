@@ -45,7 +45,7 @@ function stopPainting() {
 }
 gridContainer.addEventListener('mousedown', startPainting);
 gridContainer.addEventListener('mouseup', stopPainting);
-gridContainer.addEventListener('mouseleave', stopPainting); // Detiene la pintura si el ratón sale del contenedor
+// gridContainer.addEventListener('mouseleave', stopPainting); // Detiene la pintura si el ratón sale del contenedor
 gridContainer.addEventListener('mouseover', paint);
 
 options.addEventListener("click", (event) => {
