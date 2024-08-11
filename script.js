@@ -1,13 +1,34 @@
 let gridContainer = document.querySelector(".gridContainer");
+let squaresPerSide = document.querySelector("#squaresPerSide")
+let sliderText = document.querySelector(".sliderText");
+let refreshBtn = document.querySelector("#refreshGrid");
+let gridSize = 4;
 
-let gridSize = 16;
 
-let resetGrid = () => {
+
+
+// User Interface functions
+squaresPerSide.addEventListener("input", () => {
+    let sliderValue = squaresPerSide.value;
+    sliderText.textContent = sliderValue;
+    gridSize = sliderValue;
+    refreshGrid(gridSize)
+})
+
+
+
+
+
+
+// Grid functions
+let eraseAll = () => {
     let pixels = document.querySelectorAll(".pixel")
     pixels.forEach(pixel => pixel.classList.remove("painted"))
 }
 
 let makeGrid = (gridSize) => {
+    let grid = document.createElement("div")
+    grid.classList.add("grid")
     for(let i = 0; i < gridSize; i++) {
 
         let row = document.createElement("ul");
@@ -28,10 +49,11 @@ let makeGrid = (gridSize) => {
         
         
         
-        gridContainer.appendChild(row);
+        grid.appendChild(row);
+        
 
     }
-    ;
+    gridContainer.appendChild(grid);
 }
 
 gridContainer.addEventListener("mouseover", (event) => {
@@ -42,4 +64,19 @@ gridContainer.addEventListener("mouseover", (event) => {
     
 })
 
-makeGrid(gridSize)
+let refreshGrid = (size) => {
+    let grid = document.querySelector(".grid");
+    if (grid) {
+        grid.remove()
+    }
+    
+    makeGrid(size)
+}
+
+addEventListener("load", (event) => {
+    refreshGrid(gridSize)
+})
+
+
+
+refreshBtn.addEventListener("click", () => refreshGrid(gridSize))
