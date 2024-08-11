@@ -2,8 +2,9 @@ let gridContainer = document.querySelector(".gridContainer");
 let squaresPerSide = document.querySelector("#squaresPerSide")
 let sliderText = document.querySelector(".sliderText");
 let refreshBtn = document.querySelector("#refreshGrid");
-let gridSize = 4;
-
+let options = document.querySelector(".options");
+let gridSize = 16;
+let isMouseDown = false
 
 
 
@@ -17,6 +18,37 @@ squaresPerSide.addEventListener("input", () => {
 
 
 
+function paint(event) {
+    let target = event.target;
+    if (isMouseDown && target.classList == "pixel") {
+
+        target.classList.add('painted');
+    }
+}
+
+// Inicia la pintura
+function startPainting() {
+    isMouseDown = true;
+}
+
+// Detiene la pintura
+function stopPainting() {
+    isMouseDown = false;
+}
+gridContainer.addEventListener('mousedown', startPainting);
+gridContainer.addEventListener('mouseup', stopPainting);
+gridContainer.addEventListener('mouseleave', stopPainting); // Detiene la pintura si el ratón sale del contenedor
+gridContainer.addEventListener('mouseover', paint);
+
+options.addEventListener("click", (event) => {
+    let target = event.target;
+
+    switch(target.id) {
+        case "refreshGrid":
+            refreshGrid(gridSize);
+            break;
+    }
+})
 
 
 
@@ -56,13 +88,10 @@ let makeGrid = (gridSize) => {
     gridContainer.appendChild(grid);
 }
 
-gridContainer.addEventListener("mouseover", (event) => {
-    let target = event.target;
-    if (target.classList == "pixel") {
-        target.classList.add("painted")
-    }
-    
-})
+
+
+
+
 
 let refreshGrid = (size) => {
     let grid = document.querySelector(".grid");
@@ -79,4 +108,3 @@ addEventListener("load", (event) => {
 
 
 
-refreshBtn.addEventListener("click", () => refreshGrid(gridSize))
