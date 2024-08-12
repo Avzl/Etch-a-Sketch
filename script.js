@@ -2,12 +2,19 @@ let gridContainer = document.querySelector(".gridContainer");
 let squaresPerSide = document.querySelector("#squaresPerSide")
 let sliderText = document.querySelector(".sliderText");
 let refreshBtn = document.querySelector("#refreshGrid");
-let gridSize = 4;
+let colorPicker = document.querySelector("#colorPicker")
+let selectedColor = "#000000"
+let gridSize = 16;
 
 
 
 
 // User Interface functions
+
+colorPicker.addEventListener("input", () => {
+    selectedColor = colorPicker.value;
+})
+
 squaresPerSide.addEventListener("input", () => {
     let sliderValue = squaresPerSide.value;
     sliderText.textContent = sliderValue;
@@ -21,6 +28,14 @@ squaresPerSide.addEventListener("input", () => {
 
 
 // Grid functions
+
+
+let paint = (event) => {
+    let target = event.target;
+    if (target.classList.contains("pixel")) {
+        target.style.backgroundColor = selectedColor;
+    }
+}
 let eraseAll = () => {
     let pixels = document.querySelectorAll(".pixel")
     pixels.forEach(pixel => pixel.classList.remove("painted"))
@@ -57,10 +72,7 @@ let makeGrid = (gridSize) => {
 }
 
 gridContainer.addEventListener("mouseover", (event) => {
-    let target = event.target;
-    if (target.classList == "pixel") {
-        target.classList.add("painted")
-    }
+    paint(event)
     
 })
 
