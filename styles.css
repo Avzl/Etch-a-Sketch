@@ -30,6 +30,7 @@
 }
 .pixel {
     flex: 1;
+    opacity: 1;
 }
 
 .painted {
