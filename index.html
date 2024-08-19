@@ -11,20 +11,33 @@
     <div class="header">
         <h1 class="title">Etch-A-Sketch</h1>
     </div>
-    <div class="gridContainer">
-    </div>
-
-    <div class="slideContainer">
-        <input type="range" name="squaresPerSide" id="squaresPerSide" min="3" max="100" value="16">
-        <p class="sliderText">16</p>
-    </div>
-    <ul class="userOptions">
-        <li><button id="refreshGrid">refresh</button></li>
-        <li><input type="color" name="colorPicker" id="colorPicker">Pick a color</li>
-        <li><button id="rainbowBtn">Rainbow Mode</button></li>
-        <li><button id="shadeBtn">Shade Mode</button></li>
-    </ul>
     
+    <div class="contentContainer">
+        <div class="content">
+            <div class="sidebar">
+            
+                <div class="slideContainer">
+                    <p class="sliderText">Grid Size: 16x16</p>
+                    <input type="range" name="squaresPerSide" id="squaresPerSide" min="3" max="100" value="16">
+                    
+                </div>
+
+                <div class="colorPickerContainer">
+                    <p>Pick a color</p>
+                    <input type="color" name="colorPicker" id="colorPicker">
+                    
+                </div>
+
+                <ul class="userOptions">
+                    <li><button id="refreshGrid">refresh</button></li>
+                    <li><button id="rainbowBtn">Rainbow Mode</button></li>
+                    <li><button id="shadeBtn">Shade Mode</button></li>
+                </ul>
+            </div>
+            <div class="gridContainer">
+            </div>
+        </div>
+    </div>
     
 </body>
 </html>

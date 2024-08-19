@@ -27,7 +27,7 @@ colorPicker.addEventListener("input", () => {
 
 squaresPerSide.addEventListener("input", () => {
     let sliderValue = squaresPerSide.value;
-    sliderText.textContent = sliderValue;
+    sliderText.textContent = `Grid Size: ${sliderValue}x${sliderValue}`;
     gridSize = sliderValue;
     refreshGrid(gridSize)
 })
